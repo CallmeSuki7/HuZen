@@ -186,23 +186,7 @@ export default function Onboarding() {
           </form>
         )}
 
-        {/* Divider */}
-        {mode !== 'reset' && !resetSent && (
-          <>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, margin: '20px 0' }}>
-              <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.1)' }} />
-              <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.3)' }}>or continue with</span>
-              <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.1)' }} />
-            </div>
 
-            {/* Apple Sign In */}
-            <motion.button whileTap={{ scale: 0.97 }} onClick={handleApple} disabled={loading}
-              style={{ width: '100%', padding: '15px', borderRadius: 50, border: '1px solid rgba(255,255,255,0.2)', background: 'rgba(255,255,255,0.05)', color: 'white', fontSize: 15, fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
-              <span style={{ fontSize: 20 }}>🍎</span>
-              Continue with Apple
-            </motion.button>
-          </>
-        )}
 
         {/* Switch mode */}
         {!resetSent && (
