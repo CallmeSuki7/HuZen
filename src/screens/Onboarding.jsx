@@ -49,7 +49,20 @@ export default function Onboarding() {
         avatar: (user.user_metadata?.full_name || name || email)[0].toUpperCase(),
       })
     } catch (err) {
-      setError(err.message || 'Something went wrong')
+      const msg = err.message || ''
+      if (msg.includes('Email not confirmed')) {
+        setError('Please check your email and click the confirmation link we sent you before signing in.')
+      } else if (msg.includes('Invalid login credentials')) {
+        setError('Wrong email or password. Please try again.')
+      } else if (msg.includes('User already registered')) {
+        setError('An account with this email already exists. Try signing in instead.')
+      } else if (msg.includes('Password should be')) {
+        setError('Password must be at least 8 characters.')
+      } else if (msg.includes('rate limit')) {
+        setError('Too many attempts. Please wait a few minutes and try again.')
+      } else {
+        setError(msg || 'Something went wrong. Please try again.')
+      }
     } finally {
       setLoading(false)
     }
