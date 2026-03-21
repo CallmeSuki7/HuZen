@@ -69,7 +69,7 @@ export default function Onboarding() {
   if (step === 0) return (
     <div style={{ minHeight: '100vh', background: 'var(--navy)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 28px 52px' }}>
-        <SlideShow onDone={() => setStep(1)} />
+        <SlideShow onDone={() => setStep(1)} onSignIn={() => { setStep(1); setMode('signin') }} />
       </div>
     </div>
   )
@@ -222,7 +222,7 @@ export default function Onboarding() {
 }
 
 // Slide show component
-function SlideShow({ onDone }) {
+function SlideShow({ onDone, onSignIn }) {
   const [current, setCurrent] = useState(0)
   return (
     <>
@@ -253,7 +253,7 @@ function SlideShow({ onDone }) {
             style={{ padding: '18px', borderRadius: 50, border: 'none', background: 'linear-gradient(135deg,var(--orange),var(--yellow))', color: 'white', fontSize: 17, fontWeight: 700, cursor: 'pointer', fontFamily: 'inherit' }}>
             Get started free →
           </button>
-          <button onClick={onDone}
+          <button onClick={onSignIn}
             style={{ padding: '15px', borderRadius: 50, border: '1.5px solid rgba(255,255,255,0.15)', background: 'transparent', color: 'rgba(255,255,255,0.6)', fontSize: 15, cursor: 'pointer', fontFamily: 'inherit' }}>
             I already have an account
           </button>
